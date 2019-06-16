@@ -1,0 +1,103 @@
+@keyframes placeHolderShimmer{
+  0%{
+    transform:translateX(-468px)
+  }
+  100%{
+    transform:translateX(468px)
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-circle {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    border: .25rem solid #8acb64;
+    border-top-color: #eee;
+    animation: spin 2s infinite linear;
+}
+
+.loader {
+  display: block;
+  width:100%;
+  padding: 0 12px 12px;
+
+  .loader-background {
+    background: #f6f7f9;
+    height: 130px;
+    overflow: hidden;
+    position: relative;
+    margin-top: 25px;
+
+    &::before {
+      animation-duration: 1s;
+      animation-fill-mode: forwards;
+      animation-iteration-count: infinite;
+      animation-name: placeHolderShimmer;
+      animation-timing-function: linear;
+      background-image: linear-gradient(to right, #f6f7f9 0%, #e9ebee 20%, #f6f7f9 40%, #f6f7f9 100%);
+      background-repeat: no-repeat;
+      background-size: auto 130px;
+      content: ' ';
+      display: block;
+      height: 100%;
+      position: relative;
+    }
+
+    div {
+      background: #fff;
+      left: 0;
+      position: absolute;
+      right: 0;
+    }
+
+    .bg-side {
+      height: 89px;
+      left: 120px;
+      right: auto;
+      top: 0;
+      width: 8px;
+    }
+
+    .bg-top {
+      left: 200px;
+      top: 0;
+      height: 32px;
+    }
+    .bg-middle{
+      height: 12px;
+      left: 128px;
+      top: 32px;
+    }
+    .bg-bottom {
+      height: 10px;
+      top: 80px;
+    }
+  }
+}
+
+.loader-ellipsis {
+
+  &:after {
+    overflow: hidden;
+    display: inline-block;
+    vertical-align: bottom;
+    animation: loader-ellipsis steps(4,end) 900ms infinite;
+    content: "\2026"; /* ascii code for the ellipsis character */
+    width: 0px;
+  }
+}
+
+@keyframes loader-ellipsis {
+  to {
+    width: 1.25em;
+  }
+}
