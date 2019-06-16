@@ -13,7 +13,9 @@ export default {
       order: '',
       transmission: '',
       fuelType: '',
-      searchCarGroup: ''
+      searchCarGroup: '',
+      showMwebFilteredModule: false,
+      showMwebResultModule: true
     }
   },
   components: {
@@ -164,6 +166,14 @@ export default {
     },
     searchByCarGroup (query, filteredCars) {
       return filteredCars.filter(i => i.name.toLowerCase().includes(query.toLowerCase()) || i.car_Type.toLowerCase().includes(query.toLowerCase()))
+    },
+    showFilteredModule () {
+      this.showMwebFilteredModule = true
+      this.showMwebResultModule = false
+    },
+    closeMwebFilteredModule () {
+      this.showMwebFilteredModule = false
+      this.showMwebResultModule = true
     }
   },
   mounted () {
