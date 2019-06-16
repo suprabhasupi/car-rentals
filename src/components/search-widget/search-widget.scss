@@ -1,17 +1,15 @@
 .search-widget-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
+  width: 50%;
   position: relative;
   .search-widget {
     position: relative;
-    width: 50%;
+    width: 100%;
     display: flex;
+    flex-wrap: wrap;
   }
   input {
     width: 45%;
-    padding: 8px 12px;
+    padding: 8px 12px 8px 40px;
     border: none;
     display: flex;
     outline: none;
@@ -20,17 +18,34 @@
     flex: 2;
     border-right: 1px solid #e7e7e7;
   }
+  .location-input {
+    width: 42%;
+    position: relative;
+    display: flex;
+  }
+  .arrow {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+  }
+  .location, .calendar {
+    position: absolute;
+    top: 10px;
+    font-size: 20px;
+    left: 10px;
+  }
   button {
     flex: 1;
     border: none;
     background: #5e5bff;
     color: white;
     cursor: pointer;
+    padding: 16px;
   }
   .auto {
     position: absolute;
     top: 41px;
-    width: 37%;
+    width: 39%;
     left: 0px;
     background: white;
     padding: 10px;
@@ -55,3 +70,17 @@
     }
   }
 }
+
+@media screen and (max-width: 768px) {
+  .search-widget-wrapper {
+    width: 80%;
+    input {
+      line-height: 2.5;
+      border-bottom: 1px solid #dbd8d8;
+    }
+    .location-input {
+      width: 100%;
+    }
+  }
+}
+

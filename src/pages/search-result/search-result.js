@@ -1,4 +1,5 @@
 /* @flow */
+import SearchWidget from '../../components/search-widget'
 
 export default {
   name: 'SearchResult',
@@ -14,6 +15,9 @@ export default {
       fuelType: '',
       searchCarGroup: ''
     }
+  },
+  components: {
+    SearchWidget
   },
   computed: {
     result () {
@@ -40,6 +44,18 @@ export default {
         filteredCars = this.searchByCarGroup(this.searchCarGroup, filteredCars)
       }
       return filteredCars
+    }
+  },
+  watch: {
+    '$route.query' () {
+      this.location = this.$route.query.location
+      this.startDate = this.$route.query.startDate
+      // this.fuelType = ''
+      // this.transmission = ''
+      // this.order = ''
+      // this.type = ''
+      // this.searchByCarGroup = ''
+      this.init()
     }
   },
   methods: {

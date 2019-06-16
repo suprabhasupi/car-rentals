@@ -122,6 +122,7 @@
 
 	<!-- search result section -->
 	<div class="search-result">
+
 		<div class="sort-wrapper">
 			<label>Sort by:</label>
 			<div class="item"
@@ -135,6 +136,9 @@
 				@click="order = 'ascending'">
 				Price: Low to High
 			</div>
+		</div>
+		<div class="search-widget">
+			<SearchWidget />
 		</div>
 		<div class="car-wrapper">
 			<div class="car-details" v-for="car in result">
