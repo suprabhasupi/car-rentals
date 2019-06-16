@@ -51,6 +51,7 @@
     background: white;
     padding: 10px;
     text-align: left;
+    z-index: 1;
     border: 1px solid #ccc;
     border-bottom-left-radius: 4px;
     border-bottom-right-radius: 4px;
@@ -78,6 +79,9 @@
     input {
       line-height: 2.5;
       border-bottom: 1px solid #dbd8d8;
+    }
+    .auto {
+      width: 93%;
     }
     .location-input {
       width: 100%;
