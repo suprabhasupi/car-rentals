@@ -4,42 +4,33 @@
   align-items: center;
   width: 100vw;
   height: 100vh;
-  background-image: url('../../assets/img/error.png');
   background-size: cover;
   background-position: bottom center;
-  .not-found {
-    margin-top: 2em;
-    .error {
-      font-weight: 600;
-      font-size: 20px;
-      color: white;
-      margin: 0;
+  .error-page {
+    img {
+      width: 55%;
+      height: 100%;
+      overflow: hidden;
+      display: block;
+      margin: auto;
     }
-    .status {
-      margin: 0;
-      font-size: 30px;
-      color: white;
-      font-weight: 800;
-      margin: 10px 0;
+    p {
+    margin: 0;
+    text-align: center;
+    font-size: 24px;
+    color: #b7b7b7;
     }
-    .error-msg {
-      margin: 0;
-      font-size: 20px;
-      text-transform: uppercase;
-      font-weight: 400;
+    .take-me-home {
+      text-align: center;
+      display: block;
+      background: #5e5bff;
+      width: 150px;
+      margin: 30px auto;
+      padding: 15px 25px;
       color: white;
-    }
-    a {
-      border: 1px solid white;
-      background: white;
-      color: black;
-      padding: 9px 12px;
-      border-radius: 0;
-      position: relative;
-      top: 2em;
-      font-size: 14px;
-      font-weight: 600;
       text-decoration: none;
+      font-weight: 500;
+      border-radius: 50px;
     }
   }
 }

@@ -1,11 +1,10 @@
 <template>
   <div class="page-not-found">
-  	<div class="not-found">
-	    <p class="error">Oops Error!</p>
-	    <p class="status">404</p>
-	    <p class="error-msg">Sorry, the page not found.</p>
-	    <a href="/">Go To Homepage</a>
-	</div>
+  	<div class="error-page">
+	  	<img src="../../assets/img/error.png" alt="error page">
+	  	<p>Ooops! Something went wrong.</p>
+	  	<a href="/" title="homepage" class="take-me-home">TAKE ME HOME</a>
+  </div>
   </div>
 </template>
 
