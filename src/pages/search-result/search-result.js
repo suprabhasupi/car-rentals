@@ -60,8 +60,6 @@ export default {
         return b.can_book - a.can_book
       })
       filteredCars = filteredCars.slice(this.paginationOffset, this.paginationOffset + this.resultsPerPage)
-
-      console.log('filteredCars-->', filteredCars)
       return filteredCars
     }
   },
@@ -81,6 +79,7 @@ export default {
     init () {
       const {Home} = this.$store.state
       if (Home.allNewCategory.length) {
+        this.isLoading = false
         this.carAtLocation = Home.allNewCategory
       } else {
         Home.getFeaturedProducts().then(res => {
