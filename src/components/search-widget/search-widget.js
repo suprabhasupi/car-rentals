@@ -79,7 +79,6 @@ export default {
     }
   },
   mounted () {
-    console.log('mointed called-->', this.seletedDate, this.selectedLocation)
     this.startDate = this.seletedDate
     this.searchInput = this.selectedLocation
   }

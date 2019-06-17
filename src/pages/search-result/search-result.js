@@ -14,6 +14,10 @@ export default {
       transmission: '',
       fuelType: '',
       searchCarGroup: '',
+      paginationOffset: 0,
+      resultsPerPage: 7,
+      pageNumber: 0,
+      pages: [],
       showMwebFilteredModule: false,
       showMwebResultModule: true
     }
@@ -45,7 +49,13 @@ export default {
       if (this.searchCarGroup) {
         filteredCars = this.searchByCarGroup(this.searchCarGroup, filteredCars)
       }
-      return filteredCars
+      this.pages = Math.ceil(filteredCars.length / this.resultsPerPage)
+
+      this.paginationOffset = this.pageNumber * this.resultsPerPage
+      if (filteredCars.length < this.paginationOffset) {
+        this.paginationOffset = 0
+      }
+      return filteredCars.slice(this.paginationOffset, this.paginationOffset + this.resultsPerPage)
     }
   },
   watch: {

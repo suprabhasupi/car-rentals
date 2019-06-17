@@ -203,6 +203,23 @@
           }
         }
       }
+      .pagination {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 20px;
+        margin-top: 10px;
+        .page {
+          width: 35px;
+          height: 30px;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border: 1px solid #ccc;
+          background: white;
+        }
+      }
     }
     .mweb-filter {
       position: fixed;
