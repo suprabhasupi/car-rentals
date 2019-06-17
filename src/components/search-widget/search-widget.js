@@ -7,9 +7,12 @@ export default {
       searchInput: '',
       isAutoCompleteVisible: false,
       filteredLocation: [],
-      startDate: ''
+      startDate: '',
+      showError: false,
+      errorMessage: ''
     }
   },
+  // props: ['startDate', 'location'],
   computed: {
     allLocation () {
       const {Home} = this.$store.state
@@ -31,13 +34,22 @@ export default {
     },
     handleSearchCar () {
       this.isAutoCompleteVisible = false
-      this.$router.push({
-        name: 'SearchResult',
-        query: {
-          startDate: this.startDate,
-          location: this.searchInput
-        }
-      })
+
+      if (!this.searchInput) {
+        this.showError = true
+        this.errorMessage = 'Please enter Location'
+      } else if (!this.startDate) {
+        this.showError = true
+        this.errorMessage = 'Please enter Start Date'
+      } else {
+        this.$router.push({
+          name: 'SearchResult',
+          query: {
+            startDate: this.startDate,
+            location: this.searchInput
+          }
+        })
+      }
     },
     handleAutoCompleteSelection (loc) {
       this.searchInput = loc

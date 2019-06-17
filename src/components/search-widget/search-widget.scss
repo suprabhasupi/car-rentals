@@ -1,8 +1,15 @@
 .search-widget-wrapper {
   width: 50%;
-  box-shadow: 0 -3px 8px -6px rgba(50,50,93,.25), 0 8px 4px -8px rgba(0,0,0,.3), 0 -6px 16px -6px rgba(0,0,0,.025);
   position: relative;
+  .error {
+    color: red;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 5px 15px;
+    background: rgba(255, 255, 255, 0.5);
+  }
   .search-widget {
+    box-shadow: 0 -3px 8px -6px rgba(50,50,93,.25), 0 8px 4px -8px rgba(0,0,0,.3), 0 -6px 16px -6px rgba(0,0,0,.025);
     position: relative;
     width: 100%;
     display: flex;

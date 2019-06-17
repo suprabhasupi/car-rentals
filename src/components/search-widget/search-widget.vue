@@ -36,6 +36,7 @@
       <button @click="handleSearchCar">Submit</button>
 
     </div>
+    <div class="error" v-if="showError">{{errorMessage}}</div>
   </div>
 </template>
 
