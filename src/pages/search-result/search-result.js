@@ -15,11 +15,12 @@ export default {
       fuelType: '',
       searchCarGroup: '',
       paginationOffset: 0,
-      resultsPerPage: 7,
+      resultsPerPage: 6,
       pageNumber: 0,
       pages: [],
       showMwebFilteredModule: false,
-      showMwebResultModule: true
+      showMwebResultModule: true,
+      isLoading: true
     }
   },
   components: {
@@ -55,7 +56,13 @@ export default {
       if (filteredCars.length < this.paginationOffset) {
         this.paginationOffset = 0
       }
-      return filteredCars.slice(this.paginationOffset, this.paginationOffset + this.resultsPerPage)
+      filteredCars = filteredCars.sort((a, b) => {
+        return b.can_book - a.can_book
+      })
+      filteredCars = filteredCars.slice(this.paginationOffset, this.paginationOffset + this.resultsPerPage)
+
+      console.log('filteredCars-->', filteredCars)
+      return filteredCars
     }
   },
   watch: {
@@ -83,6 +90,7 @@ export default {
         .then(data => {
           if (data) {
             Home.allNewCategory = data
+            this.isLoading = false
             this.carAtLocation = data
             this.allCarResult = Home.allNewCategory
             this.carAtLocation = this.allCarResult
