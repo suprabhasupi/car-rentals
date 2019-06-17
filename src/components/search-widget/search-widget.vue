@@ -10,6 +10,9 @@
           v-model="searchInput"
           @input="findCars(searchInput)"
           @focus="findCars(searchInput)"
+          @keydown.down="onArrowDown"
+          @keydown.up="onArrowUp"
+          @keyup.enter="filteredLocation.length > 0 ? handleAutoCompleteSelection(filteredLocation[arrowCounter]) : handleAutoCompleteSelection(searchInput[arrowCounter])"
         />
         <i class="material-icons arrow">arrow_drop_down</i>
       </div>
@@ -19,6 +22,9 @@
           <li v-for="(location, i) in filteredLocation"
             :key="i"
             @click="handleAutoCompleteSelection(location)"
+            :class="{ 'is-active': isSelected(i) }"
+            :id="getId(i)"
+            :aria-selected="isSelected(i)"
             >
             {{location}}
           </li>

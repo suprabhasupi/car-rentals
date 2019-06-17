@@ -9,10 +9,11 @@ export default {
       filteredLocation: [],
       startDate: '',
       showError: false,
-      errorMessage: ''
+      errorMessage: '',
+      arrowCounter: 0
     }
   },
-  // props: ['startDate', 'location'],
+  props: ['seletedDate', 'selectedLocation'],
   computed: {
     allLocation () {
       const {Home} = this.$store.state
@@ -24,7 +25,7 @@ export default {
   },
   methods: {
     findCars (query) {
-      if (query.length === 0) {
+      if (query && query.length === 0) {
         this.filteredLocation = []
         this.isAutoCompleteVisible = false
       } else {
@@ -34,7 +35,7 @@ export default {
     },
     handleSearchCar () {
       this.isAutoCompleteVisible = false
-
+      this.arrowCounter = 0
       if (!this.searchInput) {
         this.showError = true
         this.errorMessage = 'Please enter Location'
@@ -54,6 +55,32 @@ export default {
     handleAutoCompleteSelection (loc) {
       this.searchInput = loc
       this.isAutoCompleteVisible = false
+    },
+    onArrowDown (evt) {
+      if (this.arrowCounter < this.searchInput.length - 1 || this.arrowCounter < this.filteredLocation.length - 1) {
+        this.arrowCounter = this.arrowCounter + 1
+        this.setActiveDescendent()
+      }
+    },
+    onArrowUp (evt) {
+      if (this.arrowCounter > 0) {
+        this.arrowCounter = this.arrowCounter - 1
+        this.setActiveDescendent()
+      }
+    },
+    setActiveDescendent () {
+      this.activedescendant = this.getId(this.arrowCounter)
+    },
+    getId (index) {
+      return `result-option-${index}`
+    },
+    isSelected (i) {
+      return i === this.arrowCounter
     }
+  },
+  mounted () {
+    console.log('mointed called-->', this.seletedDate, this.selectedLocation)
+    this.startDate = this.seletedDate
+    this.searchInput = this.selectedLocation
   }
 }

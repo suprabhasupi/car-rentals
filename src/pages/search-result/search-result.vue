@@ -3,6 +3,9 @@
   <!-- filter section -->
   <div class="search-filter"
     :class="{show : showMwebFilteredModule}">
+    <div @click="clearAllFilter" class="clear-filters">
+      Clear All Filter
+    </div>
     <div class="item">
       <p class="title">SEARCH FOR CARGROUP:</p>
       <input type="text"
@@ -133,7 +136,7 @@
 
     <div class="modify-wrapper">
       <p class="title">MODIFY SEARCH: </p>
-      <SearchWidget />
+      <SearchWidget v-if="startDate" :seleted-date="startDate" :selected-location="location" />
       <div class="sort-wrapper">
         <label>SORT BY:</label>
         <div class="item"
@@ -152,7 +155,7 @@
     </div>
 
     <div class="car-wrapper">
-      <div class="car-details" v-for="car in result">
+      <div class="car-details" v-for="car in result.slice(0,7)">
         <img :src="car.photo">
         <div class="details">
           <p class="name">{{car.name}}</p>

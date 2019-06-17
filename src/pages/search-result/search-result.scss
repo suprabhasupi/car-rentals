@@ -20,6 +20,17 @@
     background: #efefef;
     font-size: 12px;
     flex: 1;
+    .clear-filters {
+      display: flex;
+      justify-content: flex-end;
+      padding-right: 28px;
+      cursor: pointer;
+      color: #5e5bff;
+      font-weight: 600;
+      letter-spacing: 0.6px;
+      font-size: 12px;
+      text-decoration: underline;
+    }
     .item {
       background: #efefef;
       padding: 10px 30px;

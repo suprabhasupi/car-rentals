@@ -174,6 +174,13 @@ export default {
     closeMwebFilteredModule () {
       this.showMwebFilteredModule = false
       this.showMwebResultModule = true
+    },
+    clearAllFilter () {
+      this.type = ''
+      this.order = ''
+      this.transmission = ''
+      this.fuelType = ''
+      this.searchCarGroup = ''
     }
   },
   mounted () {
