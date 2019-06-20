@@ -13,7 +13,7 @@ export default {
       arrowCounter: 0
     }
   },
-  props: ['seletedDate', 'selectedLocation'],
+  props: ['seletedDate', 'selectedLocation', 'minDate'],
   computed: {
     allLocation () {
       const {Home} = this.$store.state
@@ -42,6 +42,8 @@ export default {
       } else if (!this.startDate) {
         this.showError = true
         this.errorMessage = 'Please enter Start Date'
+      } else if (this.startDate < this.validateDate()) {
+        this.errorMessage = 'Date is in past'
       } else {
         this.$router.push({
           name: 'SearchResult',
@@ -76,6 +78,10 @@ export default {
     },
     isSelected (i) {
       return i === this.arrowCounter
+    },
+    validateDate () {
+      let date = new Date().toISOString().slice(0, 10)
+      return date
     }
   },
   mounted () {

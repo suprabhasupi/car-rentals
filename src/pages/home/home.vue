@@ -2,7 +2,7 @@
   <div class="home-page">
      <div class="home">
       <h1>Self Drive Car Rental</h1>
-      <SearchWidget />
+      <SearchWidget :seleted-date="today" :min-date="today" />
      </div>
   </div>
 </template>

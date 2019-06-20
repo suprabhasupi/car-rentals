@@ -35,7 +35,7 @@
         <i class="material-icons calendar">calendar_today</i>
         <input type="date"
           name="date-time"
-          min="2019-06-16"
+          :min="minDate"
           v-model="startDate"
         />
       </div>
