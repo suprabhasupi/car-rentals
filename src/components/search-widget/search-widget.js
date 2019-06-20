@@ -43,8 +43,10 @@ export default {
         this.showError = true
         this.errorMessage = 'Please enter Start Date'
       } else if (this.startDate < this.validateDate()) {
+        this.showError = true
         this.errorMessage = 'Date is in past'
       } else {
+        this.showError = false
         this.$router.push({
           name: 'SearchResult',
           query: {
