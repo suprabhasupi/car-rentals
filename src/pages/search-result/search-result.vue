@@ -20,8 +20,8 @@
         <div class="cargroup">
 
           <div class="type"
-            :class="{active : type === 'hatchback'}"
-            @click="type = 'hatchback'">
+            :class="{active : types.includes('hatchback')}"
+            @click="handleCargroupSelection('hatchback')">
             <svg class="icon">
               <use xlink:href="#hatchback" />
             </svg>
@@ -31,8 +31,8 @@
           </div>
 
           <div class="type"
-            :class="{active : type === 'sedan'}"
-            @click="type = 'sedan'">
+            :class="{active : types.includes('sedan')}"
+            @click="handleCargroupSelection('sedan')">
             <svg class="icon">
               <use xlink:href="#car" />
             </svg>
@@ -42,8 +42,8 @@
           </div>
 
           <div class="type"
-            :class="{active : type === 'mini suv'}"
-            @click="type = 'mini suv'">
+            :class="{active : types.includes('mini suv')}"
+            @click="handleCargroupSelection('mini suv')">
             <svg class="icon">
               <use xlink:href="#jeep" />
             </svg>
@@ -53,8 +53,8 @@
           </div>
 
           <div class="type"
-            :class="{active : type === 'suv'}"
-            @click="type = 'suv'">
+            :class="{active : types.includes('suv')}"
+            @click="handleCargroupSelection('suv')">
             <svg class="icon">
               <use xlink:href="#hatchback" />
             </svg>
@@ -133,9 +133,9 @@
   <!-- search result section -->
   <div class="search-result"
     :class="{hide : !showMwebResultModule}">
-
     <div class="modify-wrapper">
       <p class="title">MODIFY SEARCH: </p>
+
       <SearchWidget v-if="startDate" :seleted-date="startDate" :selected-location="location" />
       <div class="sort-wrapper">
         <label>SORT BY:</label>
@@ -184,7 +184,7 @@
         <div class="booking-flow">
           <p class="price">₹ {{car.price}}</p>
           <button v-if="!car.can_book" class="disabled" disabled> Not Available</button>
-          <button v-else>Book Now</button>
+          <button v-else>Selected</button>
         </div>
       </div>
     </div>

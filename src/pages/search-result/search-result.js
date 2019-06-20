@@ -9,7 +9,7 @@ export default {
       carAtLocation: [],
       location: '',
       startDate: '',
-      type: '',
+      types: [],
       order: '',
       transmission: '',
       fuelType: '',
@@ -44,8 +44,8 @@ export default {
       if (this.order) {
         filteredCars = this.sortByPrice(this.order, filteredCars)
       }
-      if (this.type) {
-        filteredCars = this.sortByCarGroup(this.type, filteredCars)
+      if (this.types.length > 0) {
+        filteredCars = this.sortByCarGroup(this.types, filteredCars)
       }
       if (this.searchCarGroup) {
         filteredCars = this.searchByCarGroup(this.searchCarGroup, filteredCars)
@@ -128,28 +128,35 @@ export default {
         return filteredCars.sort((a, b) => b.price - a.price)
       }
     },
-    sortByCarGroup (type, filteredCars) {
-      switch (type) {
-        case 'hatchback':
-          this.type = 'hatchback'
-          return filteredCars.filter(i => i.car_Type.toLowerCase() === 'hatchback')
-
-        case 'sedan':
-          this.type = 'sedan'
-          return filteredCars.filter(i => i.car_Type.toLowerCase() === 'sedan')
-
-        case 'mini suv':
-          this.type = 'mini suv'
-          return filteredCars.filter(i => i.car_Type.toLowerCase() === 'mini suv')
-
-        case 'suv':
-          this.type = 'suv'
-          return filteredCars.filter(i => i.car_Type.toLowerCase() === 'suv')
-
-        default:
-          console.error('invalid car type selected')
-          return filteredCars
-      }
+    sortByCarGroup (types, filteredCars) {
+      let result = []
+      types.forEach(type => {
+        let selectedCars = []
+        switch (type) {
+          case 'hatchback':
+            this.type = 'hatchback'
+            selectedCars = filteredCars.filter(i => i.car_Type.toLowerCase() === 'hatchback')
+            break
+          case 'sedan':
+            this.type = 'sedan'
+            selectedCars = filteredCars.filter(i => i.car_Type.toLowerCase() === 'sedan')
+            break
+          case 'mini suv':
+            this.type = 'mini suv'
+            selectedCars = filteredCars.filter(i => i.car_Type.toLowerCase() === 'mini suv')
+            break
+          case 'suv':
+            this.type = 'suv'
+            selectedCars = filteredCars.filter(i => i.car_Type.toLowerCase() === 'suv')
+            break
+          default:
+            console.error('invalid car type selected')
+            selectedCars = filteredCars
+        }
+        result = [...result, ...selectedCars]
+      })
+      console.log('returning car-->', result)
+      return result
     },
     sortByTransmission (transmission, filteredCars) {
       switch (transmission) {
@@ -198,6 +205,13 @@ export default {
       this.transmission = ''
       this.fuelType = ''
       this.searchCarGroup = ''
+    },
+    handleCargroupSelection (type) {
+      if (this.types.includes(type)) {
+        this.types = this.types.filter(t => t !== type)
+      } else {
+        this.types.push(type)
+      }
     }
   },
   mounted () {
