@@ -190,6 +190,7 @@
           }
           img {
             width: 200px;
+            height: 160px
           }
           .details {
             display: flex;
@@ -330,6 +331,8 @@
       }
       .car-wrapper {
         .car-details {
+          display: block;
+          text-align: center;
           img {
             width: 175px;
             margin: auto;
