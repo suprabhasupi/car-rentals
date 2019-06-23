@@ -8,7 +8,7 @@ class HomeState {
     this.allNewCategory = []
   }
   getFeaturedProducts () {
-    return fetch('https://api.sheety.co/311576ae-321a-43e3-9a5b-61b3ac373d85', {
+    return fetch('https://car-search.s3.ap-south-1.amazonaws.com/car-rental.json', {
       method: 'GET'
     })
   }
