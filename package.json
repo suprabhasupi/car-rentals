@@ -59,7 +59,7 @@
     "eslint-plugin-promise": "^3.4.0",
     "eslint-plugin-standard": "^3.0.1",
     "eventsource-polyfill": "^0.9.6",
-    "express": "^4.14.1",
+    "express": "^4.17.3",
     "extract-text-webpack-plugin": "^2.1.0",
     "file-loader": "^1.1.4",
     "flow-bin": "^0.47.0",
